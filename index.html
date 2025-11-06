@@ -6,42 +6,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>kai + seli ❤️ future plans</title>
 <style>
-  body, html {
+  html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at center, #000010 0%, #000 100%);
     color: #00f0ff;
     overflow-x: hidden;
-  }
-
-  h1, h2, h3 {
-    margin: 0.5em 0;
+    scroll-behavior: smooth;
   }
 
   h1 {
-    font-size: 3em;
+    font-size: clamp(2em, 6vw, 3.2em);
     text-align: center;
     color: #00f0ff;
     text-shadow: 0 0 15px #00f0ff, 0 0 30px #00ffff;
     animation: glow 2s ease-in-out infinite alternate;
-    margin-top: 50px;
+    margin-top: 2em;
   }
 
   h2 {
-    font-size: 2em;
+    font-size: clamp(1.6em, 4vw, 2em);
     color: #00c8ff;
-    margin-bottom: 0.5em;
+    text-align: center;
   }
 
   h3 {
-    font-size: 1.5em;
+    font-size: clamp(1.2em, 3vw, 1.5em);
     color: #66ccff;
   }
 
   section {
-    padding: 80px 20px;
-    min-height: 100vh;
+    padding: 70px 20px;
+    min-height: 80vh;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1.2s ease, transform 1.2s ease;
@@ -56,90 +53,73 @@
     max-width: 850px;
     margin: auto;
     background: rgba(0, 10, 40, 0.4);
-    padding: 50px;
+    padding: 40px;
     border-radius: 20px;
     box-shadow: 0 0 40px #00f0ff33;
     backdrop-filter: blur(8px);
-    transition: transform 0.8s ease, box-shadow 0.8s ease;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
   }
 
   .section-container:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 60px #00ffff88;
+    transform: scale(1.02);
+    box-shadow: 0 0 60px #00ffff66;
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
+  ul { list-style: none; padding: 0; }
   li {
-    margin: 10px 0;
-    font-size: 1.2em;
-    transition: color 0.4s ease, transform 0.4s ease;
+    margin: 8px 0;
+    font-size: 1.1em;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
-
   li:hover {
     color: #fff;
     text-shadow: 0 0 10px #00f0ff;
     transform: translateX(10px);
   }
 
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #00f0ff, 0 0 30px #00f0ff; }
-    to { text-shadow: 0 0 20px #00ffff, 0 0 50px #00ffff; }
-  }
-
   .background {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     overflow: hidden;
     z-index: -1;
+    pointer-events: none;
   }
 
   .particle, .heart-particle {
     position: absolute;
-    border-radius: 50%;
-    animation: floatUp linear infinite;
+    will-change: transform, opacity;
   }
 
   .particle {
+    border-radius: 50%;
     background: rgba(0,255,255,0.7);
+    animation: floatUp linear infinite;
   }
 
   .heart-particle {
     width: 20px;
     height: 20px;
-    background: transparent;
-    pointer-events: none;
     font-size: 22px;
+    pointer-events: none;
     animation: heartFloat 3s ease-out forwards;
   }
 
   @keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    0% { transform: translateY(100vh) scale(0.4); opacity: 0; }
     50% { opacity: 1; }
     100% { transform: translateY(-10vh) scale(1); opacity: 0; }
   }
 
   @keyframes heartFloat {
-    0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
-    100% { transform: translate(calc(-60px + 120px * var(--xdir)), -200px) rotate(360deg); opacity: 0; }
+    0% { transform: translate(0,0) rotate(0deg); opacity: 1; }
+    100% { transform: translate(calc(-40px + 80px * var(--xdir)), -200px) rotate(360deg); opacity: 0; }
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .section-title {
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 0 5px #00f0ff;
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #00f0ff, 0 0 30px #00f0ff; }
+    to { text-shadow: 0 0 20px #00ffff, 0 0 50px #00ffff; }
   }
 
   .heart {
@@ -155,31 +135,27 @@
   .timeline {
     position: relative;
     margin: 60px auto;
-    padding: 0;
     max-width: 700px;
   }
 
   .timeline::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 50%;
+    top: 0; left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
+    width: 3px; height: 100%;
     background: linear-gradient(180deg, #00ffff, #0066ff);
     box-shadow: 0 0 10px #00ffff;
   }
 
   .timeline-item {
     position: relative;
-    margin: 60px 0;
     width: 50%;
     padding: 20px;
+    margin: 50px 0;
     background: rgba(0,20,40,0.6);
     border-radius: 15px;
     box-shadow: 0 0 20px #00f0ff55;
-    backdrop-filter: blur(6px);
     opacity: 0;
     transform: translateY(50px);
     transition: all 1s ease;
@@ -190,22 +166,14 @@
     transform: translateY(0);
   }
 
-  .timeline-item:nth-child(odd) {
-    left: 0;
-    transform-origin: right;
-  }
-
-  .timeline-item:nth-child(even) {
-    left: 50%;
-    transform-origin: left;
-  }
+  .timeline-item:nth-child(odd) { left: 0; }
+  .timeline-item:nth-child(even) { left: 50%; }
 
   .timeline-dot {
     position: absolute;
     top: 20px;
-    right: -11px;
-    width: 20px;
-    height: 20px;
+    right: -10px;
+    width: 16px; height: 16px;
     background: #00ffff;
     border-radius: 50%;
     box-shadow: 0 0 15px #00ffff;
@@ -213,12 +181,25 @@
   }
 
   .timeline-item:nth-child(even) .timeline-dot {
-    left: -11px;
+    left: -10px; right: auto;
   }
 
   @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 0.8; }
     50% { transform: scale(1.4); opacity: 1; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 60px 15px; }
+    .section-container { padding: 25px; }
+    .timeline::before { left: 10px; }
+    .timeline-item {
+      width: 100%;
+      left: 0 !important;
+      padding-left: 35px;
+      margin: 40px 0;
+    }
+    .timeline-item .timeline-dot { left: 0; right: auto; }
   }
 </style>
 </head>
@@ -232,7 +213,7 @@
 
 <section id="names">
   <div class="section-container">
-    <h2 class="section-title">names</h2>
+    <h2>names</h2>
     <ul>
       <li>hai le - kai le</li>
       <li>selina ross - selina le</li>
@@ -242,25 +223,17 @@
 
 <section id="children">
   <div class="section-container">
-    <h2 class="section-title">names for future children 🧑‍🧑‍🧒</h2>
+    <h2>names for future children 🧑‍🧑‍🧒</h2>
     <h3>boy</h3>
-    <ul>
-      <li><strong>kai jr.</strong></li>
-      <li>kyros</li>
-      <li>karlson</li>
-    </ul>
+    <ul><li><strong>kai jr.</strong></li><li>kyros</li><li>karlson</li></ul>
     <h3>girl</h3>
-    <ul>
-      <li><strong>haven</strong></li>
-      <li>serena</li>
-      <li>chloe</li>
-    </ul>
+    <ul><li><strong>haven</strong></li><li>serena</li><li>chloe</li></ul>
   </div>
 </section>
 
 <section id="pets">
   <div class="section-container">
-    <h2 class="section-title">pets</h2>
+    <h2>pets</h2>
     <ul>
       <li>german shepherd [dog] (kronos | karolina)</li>
       <li>munchkin [cat] (hashira | halo)</li>
@@ -272,82 +245,62 @@
 
 <section id="timeline">
   <div class="section-container">
-    <h2 class="section-title">our future timeline 🌌</h2>
+    <h2>our future timeline 🌌</h2>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>2035 — more adventures</h3>
-        <p>exploring new cities together, late-night walks, building memories that glow brighter than the stars.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>2037 — dream home</h3>
-        <p>our first apartment filled with laughter, playlists, and midnight cooking sessions.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>2040 — kai jr. or haven</h3>
-        <p>starting our little family, teaching them love, kindness, and adventure.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>2045 — world travel</h3>
-        <p>seeing every ocean, every skyline, hand in hand — like we always dreamed.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>forever — kai + seli</h3>
-        <p>growing old together, glowing even brighter than the neon lights we started under 💙</p>
-      </div>
+      <div class="timeline-item"><div class="timeline-dot"></div><h3>2035 — more adventures</h3><p>exploring new cities together, late-night walks, building memories that glow brighter than the stars.</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><h3>2037 — dream home</h3><p>our first apartment filled with laughter, playlists, and midnight cooking sessions.</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><h3>2040 — kai jr. or haven</h3><p>starting our little family, teaching them love, kindness, and adventure.</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><h3>2045 — world travel</h3><p>seeing every ocean, every skyline, hand in hand — like we always dreamed.</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><h3>forever — kai + seli</h3><p>growing old together, glowing even brighter than the neon lights we started under 💙</p></div>
     </div>
   </div>
 </section>
 
 <script>
-  const background = document.getElementById('background');
-  const heartSound = document.getElementById('heartSound');
-  const sections = document.querySelectorAll('section');
-  const timelineItems = document.querySelectorAll('.timeline-item');
+const background = document.getElementById('background');
+const heartSound = document.getElementById('heartSound');
+const sections = document.querySelectorAll('section');
+const timelineItems = document.querySelectorAll('.timeline-item');
 
-  function createParticle() {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    const size = Math.random() * 10 + 5;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
-    particle.style.background = `rgba(${Math.floor(Math.random()*50)},255,255,${Math.random()})`;
-    background.appendChild(particle);
-    setTimeout(() => particle.remove(), 15000);
-  }
-  setInterval(createParticle, 250);
+function createParticle() {
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  const size = Math.random() * 8 + 4;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.left = Math.random() * 100 + 'vw';
+  particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+  particle.style.background = `rgba(0,255,255,${Math.random() * 0.8 + 0.2})`;
+  background.appendChild(particle);
+  setTimeout(() => particle.remove(), 15000);
+}
+setInterval(createParticle, 300);
 
-  document.body.addEventListener('click', (e) => {
-    const heart = document.createElement('div');
-    heart.classList.add('heart-particle');
-    heart.style.left = `${e.clientX}px`;
-    heart.style.top = `${e.clientY}px`;
-    heart.style.setProperty('--xdir', Math.random() - 0.5);
-    heart.innerText = '❤️';
-    background.appendChild(heart);
-    heartSound.currentTime = 0;
-    heartSound.play();
-    setTimeout(() => heart.remove(), 3000);
+document.body.addEventListener('click', e => {
+  const heart = document.createElement('div');
+  heart.classList.add('heart-particle');
+  heart.style.left = `${e.clientX}px`;
+  heart.style.top = `${e.clientY}px`;
+  heart.style.setProperty('--xdir', Math.random() - 0.5);
+  heart.innerText = '❤️';
+  background.appendChild(heart);
+  heartSound.currentTime = 0;
+  heartSound.play();
+  setTimeout(() => heart.remove(), 3000);
+});
+
+function revealElements() {
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) section.classList.add('visible');
   });
-
-  function revealElements() {
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) section.classList.add('visible');
-    });
-    timelineItems.forEach(item => {
-      const rect = item.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) item.classList.add('visible');
-    });
-  }
-  window.addEventListener('scroll', revealElements);
-  revealElements();
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) item.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', revealElements);
+revealElements();
 </script>
 
 </body>
