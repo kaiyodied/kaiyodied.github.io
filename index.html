@@ -1,238 +1,213 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, Loader2 } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H & T Ad Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: white;
+      color: #333;
+      overflow-x: hidden;
+    }
 
-// H & T Ad Solutions — Single-file React component
-// Tailwind CSS (expected to be available in the project)
-// Uses framer-motion for smooth animations and lucide-react for icons
+    /* COLOR PALETTE */
+    :root {
+      --pink: #ff76c8;
+      --magenta: #d400a6;
+      --purple: #7a00c2;
+    }
 
-export default function HnTAdSolutions() {
-  const container = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
-  };
+    /* SMOOTH SCROLL */
+    html {
+      scroll-behavior: smooth;
+    }
 
-  const item = {
-    hidden: { opacity: 0, y: 12 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      padding: 20px 40px;
+      position: fixed;
+      top: 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeDown 1.2s ease forwards;
+      opacity: 0;
+    }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-pink-50 to-purple-50 text-gray-900 antialiased">
-      {/* Top wave */}
-      <header className="relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none -z-10">
-          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 320">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0%" stopColor="#fff" />
-                <stop offset="40%" stopColor="#ffd6ec" />
-                <stop offset="100%" stopColor="#e9d5ff" />
-              </linearGradient>
-            </defs>
-            <path fill="url(#g1)" d="M0,96L40,128C80,160,160,224,240,234.7C320,245,400,203,480,186.7C560,171,640,181,720,197.3C800,213,880,235,960,234.7C1040,235,1120,213,1200,208C1280,203,1360,213,1400,218.7L1440,224L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
-          </svg>
-        </div>
+    nav h1 {
+      font-size: 24px;
+      background: linear-gradient(90deg, var(--pink), var(--magenta), var(--purple));
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 900;
+    }
 
-        <div className="max-w-7xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-1"
-          >
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="rounded-full bg-gradient-to-br from-pink-400 to-purple-600 p-2 shadow-xl transform-gpu animate-tilt">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="block">
-                  <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" fill="white" opacity="0.06"></rect>
-                  <path d="M4 12h16" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="7.5" cy="9" r="1.2" fill="white" />
-                </svg>
-              </div>
-              <div>
-                <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">H &amp; T Ad Solutions</h1>
-                <p className="text-sm uppercase text-pink-600 font-semibold">WE DELIVER THE BIGGER AND BETTER</p>
-              </div>
-            </div>
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
-              Ads that feel premium — <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">Bigger. Better. Bolder.</span>
-            </h2>
+    nav a:hover {
+      color: var(--magenta);
+    }
 
-            <p className="max-w-xl text-lg text-gray-700 mb-8">
-              We craft attention-grabbing campaigns, slick brand assets, and smooth experiences that convert. Animated, aesthetic, and engineered for results.
-            </p>
+    @keyframes fadeDown {
+      0% { transform: translateY(-40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
 
-            <div className="flex gap-4">
-              <a href="#contact" className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl shadow-lg bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium transform transition-transform hover:-translate-y-1 active:scale-95">
-                Get a free consult
-              </a>
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
 
-              <a href="#work" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-pink-200 bg-white/60 backdrop-blur-md text-pink-600 font-medium hover:shadow-md">
-                See our work
-              </a>
-            </div>
-          </motion.div>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-1 flex justify-center"
-          >
-            <div className="relative w-full max-w-md">
-              <div className="rounded-3xl p-6 border border-pink-50 bg-gradient-to-br from-white via-pink-50 to-purple-50 shadow-2xl">
-                <div className="rounded-xl overflow-hidden">
-                  <motion.div
-                    animate={{ rotate: [0, 2, -2, 0] }}
-                    transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-                    className="w-full h-52 bg-gradient-to-br from-pink-100 to-purple-200 flex items-center justify-center"
-                  >
-                    <svg width="180" height="100" viewBox="0 0 180 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="4" y="12" width="172" height="76" rx="10" fill="#ffffff" opacity="0.12" />
-                      <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontSize="16" fill="#fff" fontWeight="700">H &amp; T — Campaign Preview</text>
-                    </svg>
-                  </motion.div>
-                </div>
+    .hero h2 {
+      font-size: 48px;
+      background: linear-gradient(90deg, var(--pink), var(--magenta), var(--purple));
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: popIn 1.5s ease;
+    }
 
-                <div className="mt-4 grid grid-cols-2 gap-3">
-                  <div className="p-3 rounded-lg bg-white/70 backdrop-blur-sm"> <p className="text-sm font-medium">Reach</p> <p className="text-lg font-bold">1.2M+</p> </div>
-                  <div className="p-3 rounded-lg bg-white/70 backdrop-blur-sm"> <p className="text-sm font-medium">CTR</p> <p className="text-lg font-bold">4.6%</p> </div>
-                  <div className="p-3 rounded-lg bg-white/70 backdrop-blur-sm"> <p className="text-sm font-medium">Avg Order</p> <p className="text-lg font-bold">$48</p> </div>
-                  <div className="p-3 rounded-lg bg-white/70 backdrop-blur-sm"> <p className="text-sm font-medium">Saves</p> <p className="text-lg font-bold">+22k</p> </div>
-                </div>
-              </div>
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-              <div className="absolute -bottom-6 left-6 w-40 rounded-2xl p-2 bg-white/90 border border-pink-100 shadow-md backdrop-blur">
-                <div className="flex items-center gap-3">
-                  <div className="rounded-full w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">HT</div>
-                  <div>
-                    <div className="text-xs text-gray-500">Next call</div>
-                    <div className="text-sm font-medium">Nov 28 — 2:00 PM</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </header>
+    .hero p {
+      font-size: 22px;
+      margin-top: 10px;
+      color: #444;
+    }
 
-      <main className="max-w-7xl mx-auto px-6 py-16">
-        {/* Services */}
-        <motion.section variants={container} initial="hidden" animate="show" className="mb-20">
-          <motion.h3 variants={item} className="text-center text-xl font-semibold text-pink-600 uppercase mb-4">What we do</motion.h3>
-          <motion.h2 variants={item} className="text-3xl md:text-4xl font-extrabold text-center mb-8">Full‑funnel ad solutions, with flair</motion.h2>
+    .scroll-btn {
+      margin-top: 30px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, var(--pink), var(--magenta));
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: float 2s infinite ease-in-out;
+    }
 
-          <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { title: "Creative Campaigns", desc: "Story-driven creatives, scroll-stopping animations, and A/B testing for peak performance.", emoji: "✨" },
-              { title: "Social Growth", desc: "Organic strategy, paid funnels, and community-first designs to scale your socials.", emoji: "🚀" },
-              { title: "Brand Systems", desc: "Logos, motion kits, and brand guidelines so you look premium everywhere.", emoji: "🎨" },
-            ].map((s) => (
-              <motion.div key={s.title} variants={item} className="p-6 rounded-2xl bg-white shadow-lg border border-pink-50 hover:scale-105 transition-transform">
-                <div className="text-3xl mb-3">{s.emoji}</div>
-                <h4 className="font-bold text-lg mb-2">{s.title}</h4>
-                <p className="text-gray-600">{s.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
+    .scroll-btn:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
 
-        {/* Work/Case Studies */}
-        <section id="work" className="mb-20">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="text-pink-600 uppercase font-semibold text-sm">Selected work</h3>
-              <h2 className="text-2xl md:text-3xl font-extrabold">Campaign highlights</h2>
-            </div>
-            <a href="#portfolio" className="text-sm font-semibold text-pink-600">View portfolio →</a>
-          </div>
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <motion.article key={i} whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 200 }} className="rounded-3xl overflow-hidden border bg-white shadow-md">
-                <div className="h-48 bg-gradient-to-br from-pink-300 to-purple-300 flex items-center justify-center">
-                  <div className="text-white font-bold text-2xl">Case Study {i}</div>
-                </div>
-                <div className="p-6">
-                  <h4 className="font-bold mb-2">Brand uplift for Client {i}</h4>
-                  <p className="text-gray-600 mb-4">Short description — creative direction, motion design, and performance funnels that increased conversions.</p>
-                  <div className="flex gap-3">
-                    <a className="text-pink-600 font-semibold text-sm">Read →</a>
-                    <a className="text-sm text-gray-500 flex items-center gap-2"><Loader2 className="w-4 h-4"/> Performance</a>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </section>
+    /* ABOUT SECTION */
+    .section {
+      padding: 100px 40px;
+      text-align: center;
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+    }
 
-        {/* Testimonials & CTA */}
-        <section className="mb-20 bg-gradient-to-br from-white/60 to-pink-50 rounded-3xl p-8 border border-pink-50 shadow-inner">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-extrabold mb-3">They loved working with us</h3>
-              <p className="text-gray-600 mb-6">"H &amp; T transformed our ads — the creative was bold and the results spoke for themselves. Smooth process, friendly team."</p>
-              <div className="flex gap-4">
-                <div className="rounded-lg p-4 bg-white shadow"> <div className="font-semibold">Marketing Lead</div> <div className="text-sm text-gray-500">— Bright Apparel</div> </div>
-                <div className="rounded-lg p-4 bg-white shadow"> <div className="font-semibold">Founder</div> <div className="text-sm text-gray-500">— CozyBox</div> </div>
-              </div>
-            </div>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-            <div className="p-6 rounded-2xl bg-white shadow-lg text-center">
-              <div className="text-pink-600 font-bold">Ready to go bigger?</div>
-              <div className="mt-4">
-                <a href="#contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold">Let's talk</a>
-              </div>
-            </div>
-          </div>
-        </section>
+    h3 {
+      font-size: 36px;
+      color: var(--magenta);
+    }
 
-        {/* Contact */}
-        <section id="contact" className="rounded-3xl p-8 bg-white border shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-pink-600 uppercase text-sm font-semibold">Contact</h3>
-              <h2 className="text-2xl font-extrabold mb-4">Let’s build something big</h2>
-              <p className="text-gray-600 mb-6">Tell us about your project and we’ll suggest a plan tailored for growth and aesthetics.</p>
+    p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.7;
+    }
 
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-gray-700"><Mail className="w-5 h-5"/> hello@hnt-adsolutions.com</div>
-                <div className="flex items-center gap-3 text-gray-700"><Phone className="w-5 h-5"/> +1 (555) 123-4567</div>
-              </div>
+    /* FOOTER */
+    footer {
+      padding: 30px;
+      background: var(--purple);
+      color: white;
+      text-align: center;
+      margin-top: 40px;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
 
-              <div className="mt-6 text-sm text-gray-500">We typically reply within 1–2 business days.</div>
-            </div>
-
-            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Thanks! We\'ll get back to you.'); }}>
-              <div className="grid grid-cols-1 gap-3">
-                <input required className="px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Your name" />
-                <input required type="email" className="px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Email" />
-                <input className="px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Company (optional)" />
-                <textarea required className="px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300" rows={5} placeholder="Tell us about your project..."></textarea>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <button type="submit" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold">Send request</button>
-                <button type="button" className="px-4 py-2 rounded-xl border border-pink-100">Clear</button>
-              </div>
-            </form>
-          </div>
-        </section>
-
-        <footer className="mt-12 text-center text-sm text-gray-500">© {new Date().getFullYear()} H &amp; T Ad Solutions — WE DELIVER THE BIGGER AND BETTER</footer>
-      </main>
-
-      {/* Floating quick contact */}
-      <motion.a whileHover={{ scale: 1.05 }} href="#contact" className="fixed right-6 bottom-6 z-50 rounded-full shadow-2xl bg-gradient-to-br from-pink-500 to-purple-600 text-white p-3">
-        <Phone className="w-5 h-5" />
-      </motion.a>
-
-      {/* playful tiny styles */}
-      <style jsx>{`
-        .animate-tilt { animation: tilt 6s infinite linear; }
-        @keyframes tilt { 0% { transform: rotate(0) } 25% { transform: rotate(2deg) } 50% { transform: rotate(0) } 75% { transform: rotate(-2deg) } 100% { transform: rotate(0) } }
-      `}</style>
+  <nav>
+    <h1>H & T Ad Solutions</h1>
+    <div>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </div>
-  );
-}
+  </nav>
+
+  <section class="hero">
+    <h2>WE DELIVER THE BIGGER AND BETTER</h2>
+    <p>Creative. Modern. Bold Advertising Solutions.</p>
+    <a href="#about"><button class="scroll-btn">Explore ↓</button></a>
+  </section>
+
+  <section class="section" id="about">
+    <h3>About Us</h3>
+    <p>H & T Ad Solutions brings fresh energy into digital and physical advertising.
+       We focus on high‑impact visuals, modern branding, and results you can FEEL.
+    </p>
+  </section>
+
+  <section class="section" id="services">
+    <h3>Our Services</h3>
+    <p>
+      • Digital Marketing<br>
+      • Social Media Ad Campaigns<br>
+      • Branding & Identity<br>
+      • Print & Media Advertising<br>
+      • Custom Visuals & Animations
+    </p>
+  </section>
+
+  <section class="section" id="contact">
+    <h3>Contact Us</h3>
+    <p>Email: contact@htadsolutions.com<br>
+       Instagram: @HTAdSolutions</p>
+  </section>
+
+  <footer>
+    © 2025 H & T Ad Solutions — All rights reserved.
+  </footer>
+
+</body>
+</html>
